@@ -21,7 +21,7 @@ function App() {
       setFileBase64(btoa(reader.result))
       let pdfText = window.pdf2text(btoa(reader.result))
       setFileText(pdfText)
-      let matchItems = pdfText.matchAll(/(?<item>\d{1,2})\s(?<materialno>\d{10})\s(?<description>[0-9A-Z\-\s\&]+)\s(?<date>\d{1,2}\.\d{1,2}\.\d{4})\s(?<quantity>\d+|\d+.\d+)\s(?<quantifier>\w+)\s(?<unitprice>\d+\.\d{2})\s(?<totalprice>\d+\.\d{2})/gm)
+      let matchItems = pdfText.matchAll(/(?<item>\d{1,2})\s(?<materialno>\d{10})\s(?<description>[0-9A-Z\-\s\&\.]+)\s(?<date>\d{1,2}\.\d{1,2}\.\d{4})\s(?<quantity>\d+|\d+.\d+)\s(?<quantifier>\w+)\s(?<unitprice>\d+\,?\d+\.\d{2})\s(?<totalprice>\d+\,?\d+\.\d{2})/gm)
       setItems(Array.from(matchItems).map(item => item.groups))
     }
 
@@ -72,7 +72,8 @@ function App() {
       </table>}
       {/*fileBase64 !== null && <PDFReader data={atob(fileBase64)} width={700}/>*/}
       {fileBase64 !== null && <Button variant="secondary" onClick={()=>{setModalPdf(true)}} >View PDF</Button>}
-       
+      
+      {/* Unhide for debug purpose <div>{fileText}</div>*/}
       <Modal centered scrollable show={modalPdf} onHide={()=>{setModalPdf(false)}} dialogClassName={'pdf-modal'} size="xl">
         <Modal.Header closeButton>
           <Modal.Title>PDF Document</Modal.Title>
