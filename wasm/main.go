@@ -10,13 +10,13 @@ import (
 )
 
 func readPdf2(this js.Value, i []js.Value) interface{} {
+	//Read file from local drive
 	/*fbyte, err := ioutil.ReadFile(path)
 
 	if err != nil {
 		panic(err)
-	}*/
-	//base64output := base64.StdEncoding.EncodeToString(fbyte)
-	//println(base64output)
+	}
+	//base64output := base64.StdEncoding.EncodeToString(fbyte)*/
 
 	base64output := i[0].String()
 	decodedBytes, err := base64.StdEncoding.DecodeString(base64output)
@@ -57,6 +57,7 @@ func readPdf2(this js.Value, i []js.Value) interface{} {
 			}
 		}
 	}
+
 	return buf.String()
 }
 

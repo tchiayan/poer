@@ -9,13 +9,24 @@
 div.dropFileArea{
   width: 90%;
   height: 140px;
-  border: dashed 2px gray;
+  border: dashed 2px #dee2e6;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.po-output tr,td,thead,tbody{
+div.itemsArea{
+  width: 90%;
+}
+
+div.actionArea{
+  margin:24px 0px 10px 0px;
+  width: 90%; 
+  display:flex;
+  justify-content: flex-end;
+}
+
+table.po-output tr,table.po-output td,table.po-output thead,table.po-output tbody{
   border-collapse: collapse;
   border: 1px solid gray;
   font-size: 14px;
@@ -25,7 +36,7 @@ table.po-output{
   margin: 20px 0px;
 }
 
-.po-output td{
+table.po-output td{
   padding: 2px 4px;
 }
 
