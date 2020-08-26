@@ -27,10 +27,10 @@
     <!--PDF-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.3.200/pdf.min.js"></script>
     <!-- WASM -->
-    <script src="/wasm_exec.js"></script>
+    <script src="wasm_exec.js"></script>
 		<script>
             const go = new Go();
-            fetch("/main.wasm").then((response)=>{
+            fetch("main.wasm").then((response)=>{
                 return response.arrayBuffer()
             }).then((buffer)=>{
                 WebAssembly.instantiate(buffer, go.importObject).then((result) => {
