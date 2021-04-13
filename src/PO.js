@@ -31,7 +31,7 @@ function PO(){
         webe:{
             poNumber : /PO\s+Number\s+:\s*(?<ponumber>\d+)/, 
             poDate: /PO\s+Date\s+:\s*(?<podate>[\d]+[\.|\-|\\][\d]+[\.|\-|\\][\d]+)/, 
-            poSite: /SITE ID.\s+(?<poSite>\w+)/,
+            poSite: /SITE ID\s*.\s*(?<poSite>\w+)/i,
             items: /(?<item>\d{1,2})\s(?<materialno>\d{10})\s(?<description>.+?)\s(?<date>\d{1,2}\.\d{1,2}\.\d{4})\s(?<quantity>\d+|\d+.\d+)\s(?<quantifier>\w+)\s(?<unitprice>\d+\,?\d*\.\d{2})\s(?<totalprice>\d*\,?\d+\.\d{2})/gm
         },
         ericssondigi:{
