@@ -31,6 +31,7 @@ function PO(){
         webe:{
             poNumber : /PO\s+Number\s+:\s*(?<ponumber>\d+)/, 
             poDate: /PO\s+Date\s+:\s*(?<podate>[\d]+[\.|\-|\\][\d]+[\.|\-|\\][\d]+)/, 
+            poSite: /SITE ID.\s+(?<poSite>\w+)/,
             items: /(?<item>\d{1,2})\s(?<materialno>\d{10})\s(?<description>.+?)\s(?<date>\d{1,2}\.\d{1,2}\.\d{4})\s(?<quantity>\d+|\d+.\d+)\s(?<quantifier>\w+)\s(?<unitprice>\d+\,?\d*\.\d{2})\s(?<totalprice>\d*\,?\d+\.\d{2})/gm
         },
         ericssondigi:{
@@ -91,22 +92,25 @@ function PO(){
                 //setFileBase64(btoa(reader.result))
                 let pdfText = window.pdf2text(btoa(reader.result))
                 console.log(pdfText)
-                let [poNumber , poDate] = ["" , ""]
+                let [poNumber , poDate , poSite] = ["" , "", ""]
 
                 
-                if(pdfText.match(vendorConfig[vendor].poNumber)){    
+                if(vendorConfig[vendor]['poNumber'] && pdfText.match(vendorConfig[vendor]['poNumber'])){    
                     poNumber = pdfText.match(vendorConfig[vendor].poNumber).groups.ponumber
-                    console.log(poNumber)
                 }
 
-                if(pdfText.match(vendorConfig[vendor].poDate)){
+                if(vendorConfig[vendor]['poDate'] && pdfText.match(vendorConfig[vendor]['poDate'])){
                     poDate = moment(pdfText.match(vendorConfig[vendor].poDate).groups.podate, "DD.MM.YYYY").format("YYYY/MM/DD")
+                }
+
+                if(vendorConfig[vendor]['poSite'] && pdfText.match(vendorConfig[vendor]['poSite'])){
+                    poSite = pdfText.match(vendorConfig[vendor].poSite).groups.poSite
                 }
 
                 //setFileText(pdfText)
                 let matchItems = pdfText.matchAll(vendorConfig[vendor].items)
                 
-                let poitem = Array.from(matchItems).map(item => item.groups).map(item => ({ ...{ponumber:poNumber, podate:poDate},...item }))
+                let poitem = Array.from(matchItems).map(item => item.groups).map(item => ({ ...{ponumber:poNumber, podate:poDate, posite: poSite},...item }))
 
                 poitem.forEach(item => {
                     if('date' in item){
