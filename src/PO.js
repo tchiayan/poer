@@ -110,7 +110,7 @@ function PO(){
                 //setFileText(pdfText)
                 let matchItems = pdfText.matchAll(vendorConfig[vendor].items)
                 
-                let poitem = Array.from(matchItems).map(item => item.groups).map(item => ({ ...{ponumber:poNumber, podate:poDate, posite: poSite},...item }))
+                let poitem = Array.from(matchItems).map(item => item.groups).map(item => ({ ...{posite: poSite , ponumber:poNumber, podate:poDate},...item }))
 
                 poitem.forEach(item => {
                     if('date' in item){
