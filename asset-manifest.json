@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/poer/static/css/main.3e1c8db2.chunk.css",
-    "main.js": "/poer/static/js/main.1e6bdfcc.chunk.js",
-    "main.js.map": "/poer/static/js/main.1e6bdfcc.chunk.js.map",
+    "main.js": "/poer/static/js/main.4f5304f2.chunk.js",
+    "main.js.map": "/poer/static/js/main.4f5304f2.chunk.js.map",
     "runtime-main.js": "/poer/static/js/runtime-main.071a1f7f.js",
     "runtime-main.js.map": "/poer/static/js/runtime-main.071a1f7f.js.map",
     "static/css/2.1e7157e9.chunk.css": "/poer/static/css/2.1e7157e9.chunk.css",
     "static/js/2.bf57e668.chunk.js": "/poer/static/js/2.bf57e668.chunk.js",
     "static/js/2.bf57e668.chunk.js.map": "/poer/static/js/2.bf57e668.chunk.js.map",
     "index.html": "/poer/index.html",
-    "precache-manifest.51139097104d864d78db47dd47b3615b.js": "/poer/precache-manifest.51139097104d864d78db47dd47b3615b.js",
+    "precache-manifest.1171436a269568b38ce3a79a8e24602f.js": "/poer/precache-manifest.1171436a269568b38ce3a79a8e24602f.js",
     "service-worker.js": "/poer/service-worker.js",
     "static/css/2.1e7157e9.chunk.css.map": "/poer/static/css/2.1e7157e9.chunk.css.map",
     "static/css/main.3e1c8db2.chunk.css.map": "/poer/static/css/main.3e1c8db2.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/css/2.1e7157e9.chunk.css",
     "static/js/2.bf57e668.chunk.js",
     "static/css/main.3e1c8db2.chunk.css",
-    "static/js/main.1e6bdfcc.chunk.js"
+    "static/js/main.4f5304f2.chunk.js"
   ]
 }
