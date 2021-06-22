@@ -32,6 +32,7 @@ function PO(){
             poNumber : /PO\s+Number\s+:\s*(?<ponumber>\d+)/, 
             poDate: /PO\s+Date\s+:\s*(?<podate>[\d]+[\.|\-|\\][\d]+[\.|\-|\\][\d]+)/, 
             poSite: /SITE ID\s*.\s*(?<poSite>\w+)/i,
+            poContract: /Contract\s+No\s+:\s(?<contractno>\d+)/ , 
             items: /(?<item>\d{1,2})\s(?<materialno>\d{10})\s(?<description>.+?)\s(?<date>\d{1,2}\.\d{1,2}\.\d{4})\s(?<quantity>\d+|\d+.\d+)\s(?<quantifier>\w+)\s(?<unitprice>\d+\,?\d*\.\d{2})\s(?<totalprice>\d*\,?\d+\.\d{2})/gm
         },
         ericssondigi:{
@@ -117,6 +118,22 @@ function PO(){
                         item['date'] = moment(item['date'],"DD.MM.YYYY").format("YYYY/MM/DD")
                     }
                 })
+
+                // external request by emily 
+                // apply T prefix to all material number if contract no is 
+                if(vendorConfig[vendor]['poContract']){
+                    console.log(pdfText.match(vendorConfig[vendor]['poContract']))
+                    if(pdfText.match(vendorConfig[vendor]['poContract'])){
+                        const contractNo = pdfText.match(vendorConfig[vendor]['poContract']).groups.contractno
+                        if(contractNo === '3400033518'){
+                            poitem.forEach(item => {
+                                if('materialno' in item){
+                                    item['materialno'] = `T${item['materialno']}`
+                                }
+                            })
+                        }
+                    }
+                }
                 
                 resolve({poDate:poDate, poNumber: poNumber, items:poitem?poitem:[], data: btoa(reader.result), filename: file.name})
                 //setItems(Array.from(matchItems).map(item => item.groups))
