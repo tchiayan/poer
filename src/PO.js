@@ -39,8 +39,14 @@ function PO(){
             poNumber: /Purchase Order\s*(?<ponumber>\d{10})/,
             poDate: /Date\s*(?<podate>\d{2}\.\d{2}\.\d{4})\s*\(DD\.MM\.YYYY\)/,
             items: /\s(?<itemno>\d{5})\s+(?<description>.{1,50})\s+(?<quantity>\d+\.{0,1}\d{0,})\s+(?<unit>\w+)\s+(?<unitprice>\d+(\,\d{3}){0,}\.\d{2})\s+(?<linevalue>\d+(\,\d{3}){0,}\.\d{2})(.+?)(?<siteid>\d{4}[a-z|A-Z](\_\d){0,1})/gm
+        }, 
+        ericssondnb:{
+            poNumber: /Purchase Order\s*(?<ponumber>\d{10})/,
+            poDate: /Date\s*(?<podate>\d{2}\.\d{2}\.\d{4})\s*\(DD\.MM\.YYYY\)/,
+            items: /\s(?<itemno>\d{5})\s+(?<description>.{1,50})\s+(?<quantity>\d+\.{0,1}\d{0,})\s+(?<unit>\w+)\s+(?<unitprice>\d+(\,\d{3}){0,}\.\d{2})\s+(?<linevalue>\d+(\,\d{3}){0,}\.\d{2})(?<description2>.+?)(?<siteid>[A-Z|a-z]{5}\d{4})/gm
         }
     }
+
     let fileInput = React.createRef()
 
     let toColumnName = (num) => {
@@ -165,7 +171,8 @@ function PO(){
             <Form style={{marginBottom:'10px'}}>
                 <Form.Select label="Select PO type" options={[
                     {key: 'webe', value: 'webe', text: 'Webe PO'},
-                    {key: 'ericssondigi', value:'ericssondigi', text: 'Ericssion Digi PO'}
+                    {key: 'ericssondigi', value:'ericssondigi', text: 'Ericsson Digi PO'}, 
+                    {key: 'ericssondnb' , value:'ericssondnb' , text: 'Ericsson DNB PO'}
                 ]} value={vendor} onChange={(e,{value})=>setVendor(value)}/>
             </Form>
             <div className="dropFileArea" onDragOver={(evt)=>{evt.stopPropagation();evt.preventDefault();evt.dataTransfer.dropEffect = 'copy';}} onDrop={onDropFile}>
