@@ -49,12 +49,17 @@ function ExcelPO(props){
                     console.log(json)
                     const PO_Detail =  {
                         'Purchase Contract': '', 
-                        'Date': '',
                         'Issue No.': '', 
                         'Project No.': '',
                         'Contract No.': '',
+                        'Project Name': '',
+                        'Project No.': '', 
+                        'PO No.': '', 
+                        'Submission Date': '', 
                     }
-                    const itemHeader = ["Line", "Project Area", "Site ID ", "Site Name", "Item Num", "Description", "Remark", "Unit", "Qty", "Unit Price", "Amount"]
+
+                    //const itemHeader = ["Line", "Project Area", "Site ID ", "Site Name", "Item Num", "Description", "Remark", "Unit", "Qty", "Unit Price", "Amount"]
+                    const itemHeader = ['Line','Project Area','Site ID','Site Name','Item Num','Description','Remark','Unit','Qty','Unit Price','Amount' ]
                     let nextFill = null
                     let nextItem = null
                     let lineItems = []
@@ -89,7 +94,8 @@ function ExcelPO(props){
                             item[field] = value
                         })
                     })
-                    let item =  {poDate:PO_Detail.Date, poNumber: PO_Detail['Purchase Contract'], items:lineItems?lineItems:[], filename: file.name}
+
+                    let item =  {poDate: (PO_Detail.Date ?? PO_Detail['Submission Date'] ?? ""), poNumber: PO_Detail['Purchase Contract'], items:lineItems?lineItems:[], filename: file.name}
                     resolve(item)
                     //console.log(text.replace(/(?<w1>\b)\s(?<w2>\b)/g, "$1$2"))
                 }
@@ -117,7 +123,7 @@ function ExcelPO(props){
         console.log(content)
 
         Object.keys(totalItems[0]).forEach((column,index) => {
-            if(column.match(/date/g)){
+            if(column.match(/date/gi)){
                 console.log(`Convert column ${index+1} to date format`)
                 ws.getColumn(`${toColumnName(index+1)}`).numFmt = "d-mmm-yy"
                 content.forEach(row => {
@@ -215,7 +221,7 @@ function ExcelPO(props){
                 {viewItem.map((item, itemid)=>{
                     return <tr key={`item_${itemid}`}>
                     {Object.keys(item).map((field, fieldid)=>{
-                        return <td key={`item_${itemid}_${fieldid}`}>{`${item[field]}\t`}</td>
+                        return <td key={`item_${itemid}_${fieldid}`}>{`${item[field] ?? ""}\t`}</td>
                     })}
                     </tr>
                 })}

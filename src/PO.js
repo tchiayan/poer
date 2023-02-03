@@ -43,7 +43,7 @@ function PO(){
         ericssondnb:{
             poNumber: /Purchase Order\s*(?<ponumber>\d{10})/,
             poDate: /Date\s*(?<podate>\d{2}\.\d{2}\.\d{4})\s*\(DD\.MM\.YYYY\)/,
-            items: /\s(?<itemno>\d{5})\s+(?<description>.{1,50})\s+(?<quantity>\d+\.{0,1}\d{0,})\s+(?<unit>\w+)\s+(?<unitprice>\d+(\,\d{3}){0,}\.\d{2})\s+(?<linevalue>\d+(\,\d{3}){0,}\.\d{2})(?<description2>.+?)(?<siteid>[A-Z|a-z]{5}\d{4})/gm
+            items: /\s(?<itemno>\d{5})\s+(?<description>.{1,50})\s+(?<quantity>\d+\.{0,1}\d{0,})\s+(?<unit>\w+)\s+(?<unitprice>\d+(\,\d{3}){0,}\.\d{2})\s+(?<linevalue>\d+(\,\d{3}){0,}\.\d{2})?(?<description2>.+?)(?<siteid>[A-Z|a-z]{5}\d{4})/gm
         }
     }
 
