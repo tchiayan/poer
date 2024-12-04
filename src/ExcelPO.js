@@ -48,12 +48,12 @@ function ExcelPO(props){
                     let json = XLSX.utils.sheet_to_json(ws)
                     console.log(json)
                     const PO_Detail =  {
-                        'Purchase Contract': '', 
-                        'Issue No.': '', 
-                        'Project No.': '',
-                        'Contract No.': '',
-                        'Project Name': '',
-                        'Project No.': '', 
+                        // 'Purchase Contract': '', 
+                        // 'Issue No.': '', 
+                        // 'Project No.': '',
+                        // 'Contract No.': '',
+                        // 'Project Name': '',
+                        // 'Project No.': '', 
                         'PO No.': '', 
                         'Submission Date': '', 
                     }
@@ -80,20 +80,25 @@ function ExcelPO(props){
                             if(Object.values(row).length < 5){
                                 nextItem = null
                             }else{
-                                let itemline = Object.entries(nextItem).reduce((obj , [col,colvalue]) => {
-                                    if(col in row) obj[colvalue] = row[col]
+
+                                // add PO_Detail to line item
+                                let poline = Object.entries(PO_Detail).reduce((obj , [col,colvalue]) => {
+                                    obj[col] = colvalue
                                     return obj
                                 }, {})
-                                lineItems.push(itemline)
+                                let itemline = Object.entries(nextItem).reduce((obj , [col,colvalue]) => {
+                                    if(col in row) {
+                                        obj[colvalue] = row[col]
+                                    }else{
+                                        obj[colvalue] = ""
+                                    }
+                                    return obj
+                                }, {})
+                                lineItems.push(Object.assign({}, poline, itemline))
                             }
                         }
                     })
                     
-                    lineItems.forEach(item => {
-                        Object.entries(PO_Detail).forEach(([field, value]) =>{
-                            item[field] = value
-                        })
-                    })
 
                     let item =  {poDate: (PO_Detail.Date ?? PO_Detail['Submission Date'] ?? ""), poNumber: PO_Detail['Purchase Contract'], items:lineItems?lineItems:[], filename: file.name}
                     resolve(item)
@@ -104,7 +109,6 @@ function ExcelPO(props){
         })
 
         Promise.all(promise).then((results) => {
-            console.log(results)
             setItems(results)
         })
         
@@ -112,15 +116,13 @@ function ExcelPO(props){
 
     let exportCSV = () => {
         let content = []
-        let totalItems = items.flatMap(item => item.items)
+        let totalItems = items.flatMap(item => item.items) // list of dictionary
         content = totalItems.map(lineItem => Object.values(lineItem))
 
         if(content.length > 0){
         let wb = new Excel.Workbook()
         let ws = wb.addWorksheet("PO")
         ws.addRow(Object.keys(totalItems[0]))
-        console.log(Object.keys(totalItems[0]))
-        console.log(content)
 
         Object.keys(totalItems[0]).forEach((column,index) => {
             if(column.match(/date/gi)){
