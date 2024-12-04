@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/poer/static/css/main.3e1c8db2.chunk.css",
-    "main.js": "/poer/static/js/main.0667440c.chunk.js",
-    "main.js.map": "/poer/static/js/main.0667440c.chunk.js.map",
-    "runtime-main.js": "/poer/static/js/runtime-main.071a1f7f.js",
-    "runtime-main.js.map": "/poer/static/js/runtime-main.071a1f7f.js.map",
-    "static/css/2.1e7157e9.chunk.css": "/poer/static/css/2.1e7157e9.chunk.css",
-    "static/js/2.322bc72b.chunk.js": "/poer/static/js/2.322bc72b.chunk.js",
-    "static/js/2.322bc72b.chunk.js.map": "/poer/static/js/2.322bc72b.chunk.js.map",
+    "main.css": "/poer/static/css/main.9ab14229.chunk.css",
+    "main.js": "/poer/static/js/main.f5f85195.chunk.js",
+    "main.js.map": "/poer/static/js/main.f5f85195.chunk.js.map",
+    "runtime-main.js": "/poer/static/js/runtime-main.db38c884.js",
+    "runtime-main.js.map": "/poer/static/js/runtime-main.db38c884.js.map",
+    "static/css/2.d4d2fe4f.chunk.css": "/poer/static/css/2.d4d2fe4f.chunk.css",
+    "static/js/2.69c64a0b.chunk.js": "/poer/static/js/2.69c64a0b.chunk.js",
+    "static/js/2.69c64a0b.chunk.js.map": "/poer/static/js/2.69c64a0b.chunk.js.map",
     "index.html": "/poer/index.html",
-    "precache-manifest.5a91c37f59f21d44a243c039ef235603.js": "/poer/precache-manifest.5a91c37f59f21d44a243c039ef235603.js",
+    "precache-manifest.7ad3878b6f2215ed601c9fa8e380e1d9.js": "/poer/precache-manifest.7ad3878b6f2215ed601c9fa8e380e1d9.js",
     "service-worker.js": "/poer/service-worker.js",
-    "static/css/2.1e7157e9.chunk.css.map": "/poer/static/css/2.1e7157e9.chunk.css.map",
-    "static/css/main.3e1c8db2.chunk.css.map": "/poer/static/css/main.3e1c8db2.chunk.css.map",
-    "static/js/2.322bc72b.chunk.js.LICENSE": "/poer/static/js/2.322bc72b.chunk.js.LICENSE",
+    "static/css/2.d4d2fe4f.chunk.css.map": "/poer/static/css/2.d4d2fe4f.chunk.css.map",
+    "static/css/main.9ab14229.chunk.css.map": "/poer/static/css/main.9ab14229.chunk.css.map",
+    "static/js/2.69c64a0b.chunk.js.LICENSE.txt": "/poer/static/js/2.69c64a0b.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/poer/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.071a1f7f.js",
-    "static/css/2.1e7157e9.chunk.css",
-    "static/js/2.322bc72b.chunk.js",
-    "static/css/main.3e1c8db2.chunk.css",
-    "static/js/main.0667440c.chunk.js"
+    "static/js/runtime-main.db38c884.js",
+    "static/css/2.d4d2fe4f.chunk.css",
+    "static/js/2.69c64a0b.chunk.js",
+    "static/css/main.9ab14229.chunk.css",
+    "static/js/main.f5f85195.chunk.js"
   ]
 }
